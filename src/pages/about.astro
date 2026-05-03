@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Me | Portfolio">
+  <section class="py-20 px-4 max-w-4xl mx-auto">
+    <h1 class="text-5xl font-syne font-bold mb-10 animate-on-scroll">About <span class="text-burntorange">Me</span></h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 animate-on-scroll">
+      <div>
+        <p class="text-lg leading-relaxed mb-6">
+          I'm a Front-End Web Developer with a passion for building high-performance, mobile-first web experiences. I specialize in modern Javascript frameworks and responsive design architectures.
+        </p>
+        <p class="text-lg leading-relaxed">
+          When I'm not coding, I'm exploring the latest in web technologies, optimizing Lighthouse scores, and studying UI/UX trends to create visually stunning and highly functional websites.
+        </p>
+      </div>
+      
+      <!-- Skills Bars -->
+      <div class="space-y-6">
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="font-medium">HTML & CSS</span>
+            <span class="font-medium">95%</span>
+          </div>
+          <div class="w-full bg-charcoal/10 dark:bg-offwhite/10 rounded-full h-2">
+            <div class="bg-burntorange h-2 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="font-medium">JavaScript (Vanilla)</span>
+            <span class="font-medium">90%</span>
+          </div>
+          <div class="w-full bg-charcoal/10 dark:bg-offwhite/10 rounded-full h-2">
+            <div class="bg-burntorange h-2 rounded-full" style="width: 90%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="font-medium">Astro & React</span>
+            <span class="font-medium">85%</span>
+          </div>
+          <div class="w-full bg-charcoal/10 dark:bg-offwhite/10 rounded-full h-2">
+            <div class="bg-burntorange h-2 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="font-medium">Tailwind CSS</span>
+            <span class="font-medium">95%</span>
+          </div>
+          <div class="w-full bg-charcoal/10 dark:bg-offwhite/10 rounded-full h-2">
+            <div class="bg-burntorange h-2 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools Grid -->
+    <h2 class="text-3xl font-syne font-bold mb-8 animate-on-scroll">My Toolkit</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 animate-on-scroll" style="transition-delay: 200ms;">
+      {['VS Code', 'Figma', 'Git/GitHub', 'Vite', 'Node.js', 'Vercel', 'Postman', 'Lighthouse'].map(tool => (
+        <div class="p-4 border border-charcoal/10 dark:border-offwhite/10 rounded-lg text-center hover:border-burntorange transition-colors">
+          <span class="font-medium">{tool}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

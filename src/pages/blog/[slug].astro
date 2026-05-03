@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+// Since we are using output: 'hybrid', we need to tell Astro which paths to pre-render statically
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} | Blog`}>
+  <article class="py-20 px-4 max-w-3xl mx-auto">
+    <div class="mb-12 animate-on-scroll">
+      <div class="flex items-center gap-4 text-sm font-medium opacity-60 mb-6">
+        <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+        <span>&bull;</span>
+        <span>{post.data.readTime}</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-syne font-bold mb-6">{post.data.title}</h1>
+      {post.data.description && <p class="text-xl opacity-80 leading-relaxed mb-8">{post.data.description}</p>}
+    </div>
+
+    <div class="prose prose-lg prose-invert max-w-none prose-headings:font-syne prose-headings:font-bold prose-a:text-burntorange animate-on-scroll" style="transition-delay: 200ms;">
+      <Content />
+    </div>
+  </article>
+</Layout>

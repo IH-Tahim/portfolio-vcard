@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Outfit", sans-serif;
+  --font-syne: "Syne", sans-serif;
+
+  --color-charcoal: #0D0D0D;
+  --color-burntorange: #FF4D00;
+  --color-offwhite: #F5F0E8;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}

@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: "Custom Web Development",
+    description: "High-performance, mobile-first websites built with modern technologies like Astro, vanilla JS, and Tailwind CSS. Focus on 100/100 Lighthouse scores.",
+    icon: "💻"
+  },
+  {
+    title: "Digital Marketing Integration",
+    description: "Seamless integration of Google Analytics, Tag Manager, and Meta Pixel using Partytown to keep your site blazing fast.",
+    icon: "📈"
+  },
+  {
+    title: "UI/UX Design",
+    description: "Clean, minimalist, and highly professional design systems with built-in dark mode and smooth micro-interactions.",
+    icon: "🎨"
+  },
+  {
+    title: "SEO Optimization",
+    description: "Technical SEO baked into the core architecture, ensuring your website ranks high and loads instantly on all devices.",
+    icon: "🚀"
+  }
+];
+---
+
+<Layout title="Services | Portfolio">
+  <section class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16 animate-on-scroll">
+      <h1 class="text-5xl font-syne font-bold mb-6">My <span class="text-burntorange">Services</span></h1>
+      <p class="text-lg max-w-2xl mx-auto opacity-80">
+        I offer comprehensive web solutions that blend cutting-edge performance with professional design.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {services.map((service, index) => (
+        <div class="p-8 border border-charcoal/10 dark:border-offwhite/10 rounded-2xl hover:border-burntorange dark:hover:border-burntorange transition-colors group animate-on-scroll" style={`transition-delay: ${index * 100}ms;`}>
+          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform origin-left">{service.icon}</div>
+          <h3 class="text-2xl font-syne font-bold mb-3">{service.title}</h3>
+          <p class="opacity-80 leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

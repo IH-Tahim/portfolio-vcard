@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home | Portfolio">
+  <section class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4">
+    <h1 class="text-5xl md:text-7xl font-syne font-bold mb-6 animate-on-scroll">
+      Hi, I'm a <span class="text-burntorange">Web Developer</span>
+    </h1>
+    <p class="text-lg md:text-xl max-w-2xl text-charcoal/80 dark:text-offwhite/80 mb-10 animate-on-scroll" style="transition-delay: 200ms;">
+      Specializing in high-performance, mobile-first design and modern web architecture.
+    </p>
+    <div class="flex gap-4 animate-on-scroll" style="transition-delay: 400ms;">
+      <a href="/portfolio" class="px-8 py-4 bg-burntorange text-white font-semibold rounded-full hover:bg-burntorange/90 transition-colors">
+        View My Work
+      </a>
+      <a href="/contact" class="px-8 py-4 bg-charcoal text-offwhite dark:bg-offwhite dark:text-charcoal font-semibold rounded-full hover:bg-charcoal/90 dark:hover:bg-offwhite/90 transition-colors border border-transparent dark:border-charcoal/20">
+        Contact Me
+      </a>
+    </div>
+  </section>
+  
+  <section class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-8 bg-charcoal/5 dark:bg-offwhite/5 rounded-2xl animate-on-scroll">
+        <h3 class="text-4xl font-syne font-bold text-burntorange mb-2">100/100</h3>
+        <p class="font-medium">Lighthouse Scores</p>
+      </div>
+      <div class="p-8 bg-charcoal/5 dark:bg-offwhite/5 rounded-2xl animate-on-scroll" style="transition-delay: 200ms;">
+        <h3 class="text-4xl font-syne font-bold text-burntorange mb-2">Mobile</h3>
+        <p class="font-medium">First Design</p>
+      </div>
+      <div class="p-8 bg-charcoal/5 dark:bg-offwhite/5 rounded-2xl animate-on-scroll" style="transition-delay: 400ms;">
+        <h3 class="text-4xl font-syne font-bold text-burntorange mb-2">SEO</h3>
+        <p class="font-medium">Optimized Architecture</p>
+      </div>
+    </div>
+  </section>
+</Layout>

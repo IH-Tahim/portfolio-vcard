@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Placeholder projects data
+const projects = [
+  { id: 1, title: "E-Commerce Platform", category: "Web Dev", image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { id: 2, title: "Marketing Dashboard", category: "UI/UX", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { id: 3, title: "Corporate Site", category: "Web Dev", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { id: 4, title: "SEO Campaign", category: "Marketing", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+];
+
+const categories = ["All", "Web Dev", "UI/UX", "Marketing"];
+---
+
+<Layout title="Portfolio | Portfolio">
+  <section class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-12 animate-on-scroll">
+      <h1 class="text-5xl font-syne font-bold mb-6">Featured <span class="text-burntorange">Work</span></h1>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12 animate-on-scroll" style="transition-delay: 100ms;">
+      {categories.map((cat, i) => (
+        <button class={`px-6 py-2 rounded-full border border-charcoal/20 dark:border-offwhite/20 hover:bg-burntorange hover:text-white hover:border-burntorange transition-colors ${i === 0 ? 'bg-burntorange text-white border-burntorange' : ''}`}>
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map((project, index) => (
+        <div class="group cursor-pointer rounded-2xl overflow-hidden relative animate-on-scroll" style={`transition-delay: ${index * 100}ms;`}>
+          <img src={project.image} alt={project.title} class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8 text-white">
+            <span class="text-burntorange font-medium mb-2">{project.category}</span>
+            <h3 class="text-2xl font-syne font-bold">{project.title}</h3>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
