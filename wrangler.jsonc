@@ -1,10 +1,10 @@
 {
-	"compatibility_date": "2026-05-03",
-	"compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
 	"name": "protfolio-antigraity",
-	"main": "@astrojs/cloudflare/entrypoints/server",
+	"compatibility_date": "2026-05-03",
+	"compatibility_flags": ["nodejs_compat"],
+	"main": "./dist/server/entry.mjs",
 	"assets": {
-		"directory": "./dist",
+		"directory": "./dist/client",
 		"binding": "ASSETS"
 	},
 	"observability": {
