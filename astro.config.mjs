@@ -12,7 +12,10 @@ import keystatic from '@keystatic/astro';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      exclude: ['@keystatic/astro', 'virtual:keystatic-config']
+    }
   },
 
   integrations: [partytown(), react(), markdoc(), keystatic()],
