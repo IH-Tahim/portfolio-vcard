@@ -18,9 +18,18 @@ export default defineConfig({
     plugins: [],
     optimizeDeps: {
       exclude: ['@keystatic/astro', 'virtual:keystatic-config']
+    },
+    ssr: {
+      noExternal: ['@keystatic/core', '@keystatic/astro']
+    },
+    define: {
+      'module': 'undefined'
     }
   },
 
   integrations: [partytown(), react(), markdoc(), keystatic()],
-  adapter: isProd ? cloudflare() : undefined
+  adapter: isProd ? cloudflare({
+    imageService: 'passthrough'
+  }) : undefined
 });
+

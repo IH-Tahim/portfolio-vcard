@@ -17,6 +17,11 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         date: fields.date({ label: 'Date', defaultValue: { kind: 'today' } }),
+        image: fields.image({
+          label: 'Cover Image',
+          directory: 'public/images/posts',
+          publicPath: '/images/posts/',
+        }),
         readTime: fields.text({ label: 'Read Time', defaultValue: '5 min read' }),
         description: fields.text({ label: 'Short Description', multiline: true }),
         content: fields.markdoc({ label: 'Content' }),
@@ -32,7 +37,11 @@ export default config({
         date: fields.date({ label: 'Date', defaultValue: { kind: 'today' } }),
         category: fields.text({ label: 'Category', defaultValue: 'Web Development' }),
         description: fields.text({ label: 'Short Description', multiline: true }),
-        image: fields.text({ label: 'Image URL', description: 'Enter an image URL for the project cover' }),
+        image: fields.image({
+          label: 'Project Cover',
+          directory: 'public/images/portfolio',
+          publicPath: '/images/portfolio/',
+        }),
         content: fields.markdoc({ label: 'Project Details' }),
       },
     }),

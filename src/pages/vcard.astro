@@ -2,296 +2,244 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="vCard | Imam Hasan Tahim">
-<div class="page">
+<Layout title="Imam Hasan Tahim — Digital Marketer & Web Developer" noIndex={true}>
+  <div class="vcard-page">
+    <div class="page-container">
+      <!-- ── CARD TOP ─────────────────────────────────────────────────── -->
+      <div class="card-top">
+        <div class="avatar-wrap">
+          <div class="avatar-ring"></div>
+          <div class="avatar-ring-inner"></div>
+          <div class="avatar syne">
+            <img src="/images/hero_photo.png" alt="Imam Hasan Tahim" />
+            IHT
+          </div>
+          <div class="available-dot" title="Available for work"></div>
+        </div>
 
-  <!-- ── CARD TOP ─────────────────────────────────────────────────── -->
-  <div class="card-top">
-    <div class="avatar-wrap">
-      <div class="avatar-ring"></div>
-      <div class="avatar-ring-inner"></div>
-      <div class="avatar">
-        <!-- Replace src with your real photo path -->
-        <img src="assets/tahim.jpg" alt="Imam Hasan Tahim" onerror="this.style.display='none'"/>
-        IHT
-      </div>
-      <div class="available-dot" title="Available for work"></div>
-    </div>
-
-    <div class="name">Imam Hasan Tahim</div>
-
-    <div class="title-tag">Digital Marketer &amp; Web Developer</div>
-
-    <div class="location">
-      <span>📍 Dhaka, Bangladesh</span>
-    </div>
-  </div>
-
-  <!-- ── ACTION BUTTONS ──────────────────────────────────────────── -->
-  <div class="actions">
-    <button class="btn btn-primary" onclick="downloadVCF()">
-      <span class="btn-icon">💾</span>
-      Save to Contacts
-    </button>
-    <a class="btn btn-secondary" href="tel:+8801XXXXXXXXX">
-      <span class="btn-icon">📞</span>
-      Call
-    </a>
-    <a class="btn btn-secondary" href="https://wa.me/8801XXXXXXXXX" target="_blank">
-      <span class="btn-icon">💬</span>
-      WhatsApp
-    </a>
-  </div>
-
-  <!-- ── STATS ────────────────────────────────────────────────────── -->
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-n">50<sup>+</sup></div>
-      <div class="stat-l">Projects</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">3<sup>+</sup></div>
-      <div class="stat-l">Years</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">30<sup>+</sup></div>
-      <div class="stat-l">Clients</div>
-    </div>
-  </div>
-
-  <!-- ── SOCIAL / CONTACT LINKS ───────────────────────────────────── -->
-  <div class="section-label">Connect with me</div>
-  <div class="socials">
-
-    <a class="social-link" href="https://ihtahim.com" target="_blank">
-      <div class="social-icon" style="background:rgba(255,77,0,0.12);">🌐</div>
-      <div class="social-info">
-        <div class="social-name">Website</div>
-        <div class="social-handle">ihtahim.com</div>
-      </div>
-      <div class="social-arrow">→</div>
-    </a>
-
-    <a class="social-link" href="mailto:hello@ihtahim.com">
-      <div class="social-icon" style="background:rgba(234,179,8,0.12);">✉️</div>
-      <div class="social-info">
-        <div class="social-name">Email</div>
-        <div class="social-handle">hello@ihtahim.com</div>
-      </div>
-      <div class="social-arrow">→</div>
-    </a>
-
-    <a class="social-link" href="https://linkedin.com/in/ihtahim" target="_blank">
-      <div class="social-icon" style="background:rgba(10,102,194,0.15);">💼</div>
-      <div class="social-info">
-        <div class="social-name">LinkedIn</div>
-        <div class="social-handle">linkedin.com/in/ihtahim</div>
-      </div>
-      <div class="social-arrow">→</div>
-    </a>
-
-    <a class="social-link" href="https://facebook.com/ihtahim" target="_blank">
-      <div class="social-icon" style="background:rgba(24,119,242,0.12);">👤</div>
-      <div class="social-info">
-        <div class="social-name">Facebook</div>
-        <div class="social-handle">facebook.com/ihtahim</div>
-      </div>
-      <div class="social-arrow">→</div>
-    </a>
-
-    <a class="social-link" href="https://instagram.com/ihtahim" target="_blank">
-      <div class="social-icon" style="background:rgba(225,48,108,0.12);">📸</div>
-      <div class="social-info">
-        <div class="social-name">Instagram</div>
-        <div class="social-handle">@ihtahim</div>
-      </div>
-      <div class="social-arrow">→</div>
-    </a>
-
-    <a class="social-link" href="https://twitter.com/ihtahim" target="_blank">
-      <div class="social-icon" style="background:rgba(29,155,240,0.12);">🐦</div>
-      <div class="social-info">
-        <div class="social-name">Twitter / X</div>
-        <div class="social-handle">@ihtahim</div>
-      </div>
-      <div class="social-arrow">→</div>
-    </a>
-
-  </div>
-
-  <!-- ── CONTACT EXCHANGE ─────────────────────────────────────────── -->
-  <div class="section-label" style="animation-delay:0.8s">Exchange contact</div>
-
-  <div class="exchange-section">
-    <div class="exchange-card">
-      <div class="exchange-head">
-        <div class="exchange-icon-wrap">🤝</div>
-        <div>
-          <div class="exchange-title">Share Your Details</div>
-          <div class="exchange-sub">I'll reach out to connect with you</div>
+        <div class="name syne">Imam Hasan Tahim</div>
+        <div class="title-tag">Digital Marketer &amp; Web Developer</div>
+        <div class="location">
+          <span>📍 Dhaka, Bangladesh</span>
         </div>
       </div>
 
-      <div class="exchange-body" id="exchange-form-wrap">
-        <form id="exchange-form" onsubmit="submitExchange(event)">
-          <div class="form-row">
-            <div class="field">
-              <label>First name</label>
-              <input type="text" placeholder="Rahim" required autocomplete="given-name"/>
-            </div>
-            <div class="field">
-              <label>Last name</label>
-              <input type="text" placeholder="Hossain" autocomplete="family-name"/>
-            </div>
-          </div>
-          <div class="field">
-            <label>Phone / WhatsApp</label>
-            <input type="tel" placeholder="+880 1X XX XXX XXX" required autocomplete="tel"/>
-          </div>
-          <div class="field">
-            <label>Email address</label>
-            <input type="email" placeholder="you@example.com" autocomplete="email"/>
-          </div>
-          <div class="field">
-            <label>Company (optional)</label>
-            <input type="text" placeholder="Your company name" autocomplete="organization"/>
-          </div>
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span id="btn-text">Send My Details</span>
-            <span id="btn-arrow">→</span>
-          </button>
-        </form>
+      <!-- ── ACTION BUTTONS ──────────────────────────────────────────── -->
+      <div class="actions">
+        <button class="btn btn-primary" id="saveContact">
+          <span class="btn-icon">💾</span>
+          Save to Contacts
+        </button>
+        <a class="btn btn-secondary" href="tel:+8801673539272">
+          <span class="btn-icon">📞</span>
+          Call
+        </a>
+        <a class="btn btn-secondary" href="https://wa.me/8801673539272" target="_blank">
+          <span class="btn-icon">💬</span>
+          WhatsApp
+        </a>
       </div>
 
-      <div class="success-msg" id="success-msg">
-        <div class="success-icon">✓</div>
-        <div class="success-title">Details received!</div>
-        <div class="success-text">Thank you for connecting. I'll reach out to you very soon.</div>
+      <!-- ── STATS ────────────────────────────────────────────────────── -->
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-n">50<sup>+</sup></div>
+          <div class="stat-l">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">3<sup>+</sup></div>
+          <div class="stat-l">Years</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">30<sup>+</sup></div>
+          <div class="stat-l">Clients</div>
+        </div>
       </div>
 
+      <!-- ── SOCIAL / CONTACT LINKS ───────────────────────────────────── -->
+      <div class="section-label">Connect with me</div>
+      <div class="socials">
+        <a class="social-link" href="https://ihtahim.com" target="_blank">
+          <div class="social-icon" style="background:rgba(255,77,0,0.12);">🌐</div>
+          <div class="social-info">
+            <div class="social-name">Website</div>
+            <div class="social-handle">ihtahim.com</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+        <a class="social-link" href="mailto:imamhasantahim@gmail.com">
+          <div class="social-icon" style="background:rgba(234,179,8,0.12);">✉️</div>
+          <div class="social-info">
+            <div class="social-name">Email</div>
+            <div class="social-handle">imamhasantahim@gmail.com</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+        <a class="social-link" href="https://linkedin.com/in/i-h-tahim" target="_blank">
+          <div class="social-icon" style="background:rgba(10,102,194,0.15);">💼</div>
+          <div class="social-info">
+            <div class="social-name">LinkedIn</div>
+            <div class="social-handle">linkedin.com/in/i-h-tahim</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+      </div>
+
+      <!-- ── CONTACT EXCHANGE ─────────────────────────────────────────── -->
+      <div class="section-label">Exchange contact</div>
+      <div class="exchange-section">
+        <div class="exchange-card">
+          <div class="exchange-head">
+            <div class="exchange-icon-wrap">🤝</div>
+            <div>
+              <div class="exchange-title syne">Share Your Details</div>
+              <div class="exchange-sub">I'll reach out to connect with you</div>
+            </div>
+          </div>
+          <div class="exchange-body">
+            <form id="exchangeForm">
+              <div class="form-row">
+                <div class="field">
+                  <label>First name</label>
+                  <input type="text" placeholder="Rahim" required />
+                </div>
+                <div class="field">
+                  <label>Last name</label>
+                  <input type="text" placeholder="Hossain" />
+                </div>
+              </div>
+              <div class="field">
+                <label>Phone / WhatsApp</label>
+                <input type="tel" placeholder="+880 1X XX XXX XXX" required />
+              </div>
+              <button type="submit" class="submit-btn">Send My Details →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="vcard-footer">
+        <a href="/">← Visit full website</a>
+        <p>ihtahim.com · Dhaka, Bangladesh</p>
+      </div>
     </div>
   </div>
 
-  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
-  <div class="vcard-footer">
-    <a href="https://ihtahim.com">← Visit full website</a>
-    <p>ihtahim.com · Dhaka, Bangladesh</p>
-  </div>
+  <style>
+    .vcard-page {
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .page-container {
+      max-width: 420px;
+      width: 100%;
+      padding-bottom: 60px;
+    }
+    .card-top {
+      background: linear-gradient(160deg, var(--surface) 0%, var(--dark) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 28px 32px;
+      text-align: center;
+      position: relative;
+    }
+    .avatar-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+    }
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--orange);
+      border: 2px solid var(--border);
+      overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .available-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 14px;
+      height: 14px;
+      background: #22C55E;
+      border-radius: 50%;
+      border: 2px solid var(--dark);
+    }
+    .name { font-size: 1.65rem; font-weight: 800; color: var(--cream); margin-bottom: 6px; }
+    .title-tag { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; color: var(--orange); letter-spacing: 0.18em; margin-bottom: 14px; }
+    .location { font-size: 0.82rem; color: var(--muted); }
 
-</div>
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px 20px 0; }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 13px 10px; border-radius: 10px; font-size: 0.78rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn-primary { background: var(--orange); color: #fff; grid-column: 1 / -1; }
+    .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
 
-<!-- Toast notification -->
-<div class="toast" id="toast"></div>
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 20px 20px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .stat { background: var(--surface); padding: 14px 8px; text-align: center; }
+    .stat-n { font-size: 1.4rem; font-weight: 800; color: var(--cream); }
+    .stat-l { font-size: 0.62rem; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
 
-<script>
-// ── VCF DOWNLOAD ──────────────────────────────────────────────────────────
-function downloadVCF() {
-  const vcf = `BEGIN:VCARD
+    .section-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); padding: 24px 20px 10px; }
+    .socials { padding: 0 20px; display: flex; flex-direction: column; gap: 8px; }
+    .social-link { display: flex; align-items: center; gap: 12px; padding: 13px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: var(--text); transition: 0.2s; }
+    .social-link:hover { border-color: var(--orange); transform: translateX(3px); }
+    .social-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .social-info { flex: 1; }
+    .social-name { font-size: 0.82rem; font-weight: 500; color: var(--cream); }
+    .social-handle { font-size: 0.72rem; color: var(--muted); }
+
+    .exchange-section { margin: 8px 20px 0; }
+    .exchange-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .exchange-head { padding: 16px 18px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .exchange-icon-wrap { width: 36px; height: 36px; background: var(--orange-dim); border: 1px solid var(--border-o); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .exchange-title { font-size: 0.95rem; font-weight: 700; color: var(--cream); }
+    .exchange-sub { font-size: 0.72rem; color: var(--muted); }
+    .exchange-body { padding: 16px 18px 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
+    .field label { font-size: 0.68rem; text-transform: uppercase; color: var(--muted); }
+    .field input { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; color: var(--cream); width: 100%; outline: none; }
+    .submit-btn { width: 100%; padding: 14px; background: var(--orange); color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+
+    .vcard-footer { text-align: center; padding: 28px 20px 0; }
+    .vcard-footer a { font-size: 0.75rem; color: var(--muted); text-decoration: none; }
+    .vcard-footer p { font-size: 0.68rem; color: rgba(107,101,96,0.5); margin-top: 6px; }
+  </style>
+
+  <script>
+    const saveBtn = document.getElementById('saveContact');
+    if (saveBtn) {
+      saveBtn.addEventListener('click', () => {
+        const vcardData = `BEGIN:VCARD
 VERSION:3.0
 FN:Imam Hasan Tahim
 N:Tahim;Imam Hasan;;;
 ORG:ihtahim.com
 TITLE:Digital Marketer & Web Developer
-TEL;TYPE=CELL:+8801XXXXXXXXX
-TEL;TYPE=WORK:+8801XXXXXXXXX
-EMAIL;TYPE=WORK:hello@ihtahim.com
+TEL;TYPE=CELL:+8801673539272
+EMAIL;TYPE=WORK:imamhasantahim@gmail.com
 URL:https://ihtahim.com
-ADR;TYPE=WORK:;;Dhaka;Dhaka Division;;Bangladesh
-X-SOCIALPROFILE;type=linkedin:https://linkedin.com/in/ihtahim
-X-SOCIALPROFILE;type=facebook:https://facebook.com/ihtahim
-X-SOCIALPROFILE;type=instagram:https://instagram.com/ihtahim
-X-SOCIALPROFILE;type=twitter:https://twitter.com/ihtahim
-NOTE:Digital Marketer & Web Developer based in Dhaka\\, Bangladesh. Specializing in SEO\\, Google & Facebook Ads\\, WordPress & MERN Stack development.
 END:VCARD`;
-
-  const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'Imam-Hasan-Tahim.vcf';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('✓ Contact saved to your device!');
-}
-
-// ── CONTACT EXCHANGE FORM ─────────────────────────────────────────────────
-async function submitExchange(e) {
-  e.preventDefault();
-  const btn      = document.getElementById('submit-btn');
-  const btnText  = document.getElementById('btn-text');
-  const btnArrow = document.getElementById('btn-arrow');
-
-  btn.classList.add('loading');
-  btnText.textContent = 'Sending...';
-  btnArrow.textContent = '⏳';
-
-  const form   = e.target;
-  const inputs = form.querySelectorAll('input');
-  const data   = {
-    fname:   inputs[0].value,
-    lname:   inputs[1].value,
-    phone:   inputs[2].value,
-    email:   inputs[3].value,
-    company: inputs[4].value,
-    source:  'NFC Business Card — ihtahim.com/vcard',
-  };
-
-  // ── Replace YOUR_WEB3FORMS_KEY with your actual key ──
-  // Get free key at web3forms.com
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        access_key: 'YOUR_WEB3FORMS_KEY',
-        subject: `New Contact Exchange from ${data.fname} ${data.lname}`,
-        from_name: `${data.fname} ${data.lname}`,
-        phone: data.phone,
-        email: data.email,
-        company: data.company || 'Not provided',
-        source: data.source,
-      })
-    });
-
-    const result = await res.json();
-    if (result.success) {
-      showSuccess();
-    } else {
-      throw new Error('Submission failed');
+        const blob = new Blob([vcardData], { type: 'text/vcard' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'Imam_Hasan_Tahim.vcf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
     }
-  } catch (err) {
-    // Fallback — show success anyway and log error
-    console.error(err);
-    showSuccess();
-  }
-}
-
-function showSuccess() {
-  const formWrap = document.getElementById('exchange-form-wrap');
-  const successMsg = document.getElementById('success-msg');
-  formWrap.style.display = 'none';
-  successMsg.classList.add('show');
-  showToast('✓ Details sent successfully!');
-}
-
-// ── TOAST NOTIFICATION ────────────────────────────────────────────────────
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 3200);
-}
-
-// ── TRACK PAGE VIEW (GTM / GA4) ───────────────────────────────────────────
-window.addEventListener('load', function() {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'vcard_page_view', {
-      event_category: 'NFC Card',
-      event_label: 'ihtahim.com/vcard'
-    });
-  }
-});
-</script>
+  </script>
 </Layout>

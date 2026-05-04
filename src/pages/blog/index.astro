@@ -1,41 +1,105 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
 
-const posts = await getCollection('posts');
-const sortedPosts = posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+const reader = createReader(process.cwd(), keystaticConfig);
+const posts = await reader.collections.posts.all();
+
+// Sort by date descending
+const sortedPosts = posts.sort((a, b) => 
+  new Date(b.entry.date).getTime() - new Date(a.entry.date).getTime()
+);
 ---
 
-<Layout title="Blog | Portfolio">
-  <section style="padding: 120px 7%; background: var(--dark); min-height: 80vh;">
-    <div class="section-head reveal" style="text-align: center;">
-      <div class="eyebrow" style="justify-content: center;">My Blog</div>
-      <h1 class="services-headline syne" style="margin-top: 1rem;">Thoughts & <em>Articles</em></h1>
-    </div>
-
-    {sortedPosts.length === 0 ? (
-      <div style="text-align: center; color: var(--muted); margin-top: 40px;">
-        <p>No blog posts found.</p>
-      </div>
-    ) : (
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-        {sortedPosts.map((post) => (
-          <a href={`/blog/${post.id}`} style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; transition: all 0.3s;" class="reveal" onmouseover="this.style.borderColor='var(--border-o)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)';">
-            <div style="font-size: 0.75rem; color: var(--orange); font-weight: 600; text-transform: uppercase; margin-bottom: 1rem;">
-              {new Date(post.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} · {post.data.readTime}
-            </div>
-            <h3 class="syne" style="font-size: 1.5rem; font-weight: 700; color: var(--cream); margin-bottom: 1rem; line-height: 1.2;">
-              {post.data.title}
-            </h3>
-            <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.7;">
-              {post.data.description}
-            </p>
-            <div style="margin-top: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px;">
-              Read Article <span style="font-size: 1.2rem;">→</span>
-            </div>
-          </a>
-        ))}
-      </div>
-    )}
+<Layout title="Blog — Imam Hasan Tahim | Marketing & Tech Insights">
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="blog-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-pre">Insights &mdash; ihtahim.com/blog</div>
+    <h1 class="hero-h1 syne">
+      Marketing, Tech<br>
+      <em>&amp; Growth.</em>
+    </h1>
+    <p class="hero-sub">
+      Thoughts on digital strategy, conversion optimization, and the future of marketing technology. 
+      Sharing what I learn while building for the web.
+    </p>
   </section>
+
+  <!-- ══════════════ BLOG LIST ══════════════ -->
+  <section class="blog-section">
+    <div class="blog-grid">
+      {sortedPosts.map((post, index) => (
+        <a href={`/blog/${post.slug}`} class="blog-card reveal visible">
+          <div class="blog-image">
+            <img src={post.entry.image || '/images/blog_placeholder.png'} alt={post.entry.title} />
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">{new Date(post.entry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              <span class="blog-dot">·</span>
+              <span class="blog-time">{post.entry.readTime}</span>
+            </div>
+            <h3 class="blog-title syne">{post.entry.title}</h3>
+            <p class="blog-excerpt">{post.entry.description}</p>
+            <span class="blog-more">Read Article →</span>
+          </div>
+        </a>
+      ))}
+
+      {sortedPosts.length === 0 && (
+        <div class="empty-state">
+          <p>Writing in progress. Check back soon!</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <style>
+    .blog-hero {
+      padding: calc(var(--nav-h) + 80px) 7% 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark2);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,77,0,0.022) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,77,0,0.022) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero-orb {
+      position: absolute; top: -20%; left: 50%; width: 600px; height: 600px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(255,77,0,0.05) 0%, transparent 65%);
+    }
+    .hero-h1 { font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 800; color: var(--cream); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .hero-h1 em { color: var(--orange); font-style: italic; }
+    .hero-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.85; position: relative; z-index: 1; }
+
+    .blog-section { padding: 80px 7% 120px; }
+    .blog-grid { display: flex; flex-direction: column; gap: 4rem; max-width: 1000px; margin: 0 auto; }
+    
+    .blog-card { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; text-decoration: none; align-items: start; }
+    .blog-image { border: 1px solid var(--border); overflow: hidden; aspect-ratio: 4/3; }
+    .blog-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s var(--ease); }
+    .blog-card:hover .blog-image img { transform: scale(1.05); }
+
+    .blog-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+    .blog-date, .blog-time { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; }
+    .blog-dot { color: var(--orange); }
+    
+    .blog-title { font-size: 1.8rem; font-weight: 700; color: var(--cream); margin-bottom: 1rem; transition: 0.3s; line-height: 1.25; }
+    .blog-card:hover .blog-title { color: var(--orange); }
+    .blog-excerpt { font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .blog-more { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--orange); letter-spacing: 0.1em; }
+
+    .empty-state { text-align: center; padding: 100px 0; color: var(--muted); border: 1px dashed var(--border); }
+
+    @media (max-width: 768px) {
+      .blog-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .blog-image { aspect-ratio: 16/9; }
+    }
+  </style>
 </Layout>

@@ -10,6 +10,9 @@ const {
   title = "Imam Hasan Tahim — Digital Marketer & Web Developer", 
   description = "Imam Hasan Tahim is a results-driven Digital Marketer and Web Developer based in Dhaka, Bangladesh. Specializing in Facebook & Google Ads, SEO, Shopify, WordPress, and Landing Page Design." 
 } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove leading slash
 ---
 
 <!doctype html>
@@ -39,36 +42,29 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
     <script is:inline>
-      // Early theme initialization to prevent FOUC
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
         }
-        return 'dark'; // default to dark
+        return 'dark';
       })();
-      
-      if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
     </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6SQKHJ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- ═══════════════════ NAVBAR ═══════════════════ -->
     <nav class="nav" id="nav">
       <a href="/" class="nav-logo">ih<span>.</span>tahim</a>
 
       <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/portfolio">Portfolio</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/" class={pathname === "/" ? "active" : ""}>Home</a></li>
+        <li><a href="/about" class={pathname === "/about" ? "active" : ""}>About</a></li>
+        <li><a href="/services" class={pathname === "/services" ? "active" : ""}>Services</a></li>
+        <li><a href="/portfolio" class={pathname === "/portfolio" ? "active" : ""}>Portfolio</a></li>
+        <li><a href="/blog" class={pathname === "/blog" ? "active" : ""}>Blog</a></li>
+        <li><a href="/contact" class={pathname === "/contact" ? "active" : ""}>Contact</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -85,38 +81,35 @@ const {
       <slot />
     </main>
 
-    <!-- ═══════════════════ FOOTER ═══════════════════ -->
     <footer>
-      <div>
-        <div class="footer-logo syne">ih<span>.</span>tahim</div>
-        <div class="footer-tagline">Digital Marketer &amp; Web Developer · Dhaka, BD</div>
-      </div>
+      <div class="container" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:2rem; align-items:center;">
+        <div>
+          <div class="footer-logo syne">ih<span>.</span>tahim</div>
+          <div class="footer-tagline">Digital Marketer &amp; Web Developer · Dhaka, BD</div>
+        </div>
 
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/portfolio">Portfolio</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/vcard">vCard</a></li>
-      </ul>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
 
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/in/i-h-tahim/" target="_blank" class="social-btn" title="LinkedIn">in</a>
-        <a href="https://www.facebook.com/tahim022" target="_blank" class="social-btn" title="Facebook">f</a>
-        <a href="https://instagram.com/ih_tahim" target="_blank" class="social-btn" title="Instagram">ig</a>
-        <a href="mailto:imamhasantahim@gmail.com" class="social-btn" title="Email">@</a>
-      </div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/i-h-tahim/" target="_blank" class="social-btn">in</a>
+          <a href="https://www.facebook.com/tahim022" target="_blank" class="social-btn">f</a>
+          <a href="https://instagram.com/ih_tahim" target="_blank" class="social-btn">ig</a>
+        </div>
 
-      <div class="footer-copy">
-        © 2025 Imam Hasan Tahim · ihtahim.com · All rights reserved ·
-        <a href="/vcard" style="color:var(--orange);margin-left:4px;">NFC Card</a>
+        <div class="footer-copy">
+          © 2025 Imam Hasan Tahim · All rights reserved · <a href="/vcard" style="color:var(--orange)">NFC Card</a>
+        </div>
       </div>
     </footer>
 
     <script>
-      // ── NAV scroll effect
       const nav = document.getElementById('nav');
       if (nav) {
         window.addEventListener('scroll', () => {
@@ -124,27 +117,23 @@ const {
         }, { passive: true });
       }
 
-      // ── Dark / Light theme toggle
       const toggle = document.getElementById('themeToggle');
-      const root   = document.documentElement;
-      let dark = root.getAttribute('data-theme') !== 'light';
-
+      const root = document.documentElement;
       if (toggle) {
         toggle.addEventListener('click', () => {
-          dark = !dark;
-          if (dark) {
+          const isDark = root.getAttribute('data-theme') !== 'light';
+          if (isDark) {
+            root.setAttribute('data-theme', 'light');
+            toggle.textContent = '☀️';
+            localStorage.setItem('theme', 'light');
+          } else {
             root.removeAttribute('data-theme');
             toggle.textContent = '🌙';
-            localStorage.setItem('theme','dark');
-          } else {
-            root.setAttribute('data-theme','light');
-            toggle.textContent = '☀️';
-            localStorage.setItem('theme','light');
+            localStorage.setItem('theme', 'dark');
           }
         });
       }
 
-      // ── Scroll reveal (Intersection Observer)
       const reveals = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {
@@ -153,7 +142,7 @@ const {
             observer.unobserve(e.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.1 });
       reveals.forEach(el => observer.observe(el));
     </script>
   </body>

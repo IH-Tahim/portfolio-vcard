@@ -1,39 +1,111 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection, render } from 'astro:content';
-
-export const prerender = true;
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('portfolio');
-  return projects.map(project => ({
-    params: { slug: project.id },
-    props: { project },
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const projects = await reader.collections.portfolio.all();
+  return projects.map((project) => ({
+    params: { slug: project.slug },
   }));
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project);
+const { slug } = Astro.params;
+const reader = createReader(process.cwd(), keystaticConfig);
+const project = await reader.collections.portfolio.read(slug);
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+
+const { content } = await project.content();
 ---
 
-<Layout title={`${project.data.title} | Portfolio`}>
-  <article style="padding: 120px 7%; background: var(--dark); max-width: 900px; margin: 0 auto; min-height: 80vh;">
-    <div class="reveal" style="margin-bottom: 3rem;">
-      <div style="font-size: 0.75rem; color: var(--orange); font-weight: 600; text-transform: uppercase; margin-bottom: 1rem;">
-        {project.data.category} · {new Date(project.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+<Layout title={`${project.title} — Portfolio | Imam Hasan Tahim`}>
+  <section class="project-hero">
+    <div class="hero-grid"></div>
+    <div class="container">
+      <a href="/portfolio" class="back-link">← Back to Portfolio</a>
+      <div class="project-meta">
+        <span class="cat">{project.category}</span>
+        <span class="sep">/</span>
+        <span class="date">{new Date(project.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
       </div>
-      <h1 class="syne" style="font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 800; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.1;">{project.data.title}</h1>
-      {project.data.description && <p style="font-size: 1.1rem; color: var(--muted); line-height: 1.8;">{project.data.description}</p>}
+      <h1 class="project-title syne">{project.title}</h1>
+      <p class="project-lead">{project.description}</p>
     </div>
+  </section>
 
-    {project.data.image && (
-      <div class="reveal" style="margin-bottom: 3rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
-        <img src={project.data.image} alt={project.data.title} style="width: 100%; height: auto; display: block;" />
+  <section class="project-content">
+    <div class="container">
+      <div class="content-grid">
+        <div class="main-content">
+          {project.image && (
+            <div class="featured-image">
+              <img src={project.image} alt={project.title} />
+            </div>
+          )}
+          <div class="rich-text">
+            <p>Project details and case study content goes here...</p>
+          </div>
+        </div>
+        
+        <aside class="project-sidebar">
+          <div class="sidebar-block">
+            <h4 class="sidebar-label">Client</h4>
+            <p class="sidebar-value">Confidential / Internal</p>
+          </div>
+          <div class="sidebar-block">
+            <h4 class="sidebar-label">Role</h4>
+            <p class="sidebar-value">{project.category}</p>
+          </div>
+          <div class="sidebar-block">
+            <h4 class="sidebar-label">Tech Stack</h4>
+            <div class="tech-pills">
+              <span class="tech-pill">Strategy</span>
+              <span class="tech-pill">Execution</span>
+            </div>
+          </div>
+        </aside>
       </div>
-    )}
-
-    <div class="markdown-body reveal">
-      <Content />
     </div>
-  </article>
+  </section>
+
+  <style>
+    .project-hero { padding: calc(var(--nav-h) + 60px) 7% 60px; position: relative; background: var(--dark2); border-bottom: 1px solid var(--border); }
+    .hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.4; background-image: linear-gradient(rgba(255,77,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,0,0.022) 1px, transparent 1px); background-size: 64px 64px; }
+    .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    
+    .back-link { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--orange); text-decoration: none; display: inline-block; margin-bottom: 2rem; }
+    .project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+    .cat { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--orange); letter-spacing: 0.15em; }
+    .sep { color: var(--border); }
+    .date { font-size: 0.75rem; color: var(--muted); }
+    .project-title { font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 800; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem; }
+    .project-lead { font-size: 1.1rem; color: var(--muted); line-height: 1.7; max-width: 800px; }
+
+    .project-content { padding: 80px 7%; }
+    .content-grid { display: grid; grid-template-columns: 1fr 300px; gap: 5rem; }
+    
+    .featured-image { margin-bottom: 3rem; border: 1px solid var(--border); }
+    .featured-image img { width: 100%; display: block; }
+    
+    .rich-text { font-size: 1rem; line-height: 1.85; color: var(--text); }
+    
+    .sidebar-block { margin-bottom: 2.5rem; }
+    .sidebar-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: var(--orange); letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+    .sidebar-value { font-size: 0.95rem; color: var(--cream); font-weight: 500; }
+    
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tech-pill { font-size: 0.65rem; font-weight: 600; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); border-radius: 4px; }
+
+    @media (max-width: 1024px) {
+      .content-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .project-sidebar { order: -1; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    }
+    @media (max-width: 768px) {
+      .project-sidebar { grid-template-columns: 1fr; }
+    }
+  </style>
 </Layout>
