@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import tailwindcss from '@tailwindcss/vite';
+
 import partytown from '@astrojs/partytown';
 
 import cloudflare from '@astrojs/cloudflare';
@@ -9,16 +9,18 @@ import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 
+const isProd = process.env.NODE_ENV === 'production' || process.env.npm_lifecycle_event === 'build';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [],
     optimizeDeps: {
       exclude: ['@keystatic/astro', 'virtual:keystatic-config']
     }
   },
 
   integrations: [partytown(), react(), markdoc(), keystatic()],
-  adapter: cloudflare()
+  adapter: isProd ? cloudflare() : undefined
 });

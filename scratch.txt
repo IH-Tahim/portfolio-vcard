@@ -1,0 +1,72 @@
+FOOTER:
+<footer>
+  <div>
+    <div class="footer-logo syne">ih<span>.</span>tahim</div>
+    <div class="footer-tagline">Digital Marketer &amp; Web Developer · Dhaka, BD</div>
+  </div>
+
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/vcard">vCard</a></li>
+  </ul>
+
+  <div class="footer-social">
+    <a href="https://www.linkedin.com/in/i-h-tahim/" target="_blank" class="social-btn" title="LinkedIn">in</a>
+    <a href="https://www.facebook.com/tahim022" target="_blank" class="social-btn" title="Facebook">f</a>
+    <a href="https://instagram.com/ih_tahim" target="_blank" class="social-btn" title="Instagram">ig</a>
+    <a href="mailto:imamhasantahim@gmail.com" class="social-btn" title="Email">@</a>
+  </div>
+
+  <div class="footer-copy">
+    © 2025 Imam Hasan Tahim · ihtahim.com · All rights reserved ·
+    <a href="/vcard" style="color:var(--orange);margin-left:4px;">NFC Card</a>
+  </div>
+</footer>
+JS:
+<script>
+// ── NAV scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// ── Dark / Light theme toggle
+const toggle = document.getElementById('themeToggle');
+const root   = document.documentElement;
+let dark = true;
+
+// Check saved preference
+if (localStorage.getItem('theme') === 'light') {
+  root.setAttribute('data-theme','light');
+  toggle.textContent = '☀️';
+  dark = false;
+}
+
+toggle.addEventListener('click', () => {
+  dark = !dark;
+  if (dark) {
+    root.removeAttribute('data-theme');
+    toggle.textContent = '🌙';
+    localStorage.setItem('theme','dark');
+  } else {
+    root.setAttribute('data-theme','light');
+    toggle.textContent = '☀️';
+    localStorage.setItem('theme','light');
+  }
+});
+
+// ── Scroll reveal (Intersection Observer)
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>

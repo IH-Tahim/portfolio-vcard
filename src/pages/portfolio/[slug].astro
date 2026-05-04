@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const projects = await getCollection('portfolio');
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout title={`${project.data.title} | Portfolio`}>
+  <article style="padding: 120px 7%; background: var(--dark); max-width: 900px; margin: 0 auto; min-height: 80vh;">
+    <div class="reveal" style="margin-bottom: 3rem;">
+      <div style="font-size: 0.75rem; color: var(--orange); font-weight: 600; text-transform: uppercase; margin-bottom: 1rem;">
+        {project.data.category} · {new Date(project.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      </div>
+      <h1 class="syne" style="font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 800; color: var(--cream); margin-bottom: 1.5rem; line-height: 1.1;">{project.data.title}</h1>
+      {project.data.description && <p style="font-size: 1.1rem; color: var(--muted); line-height: 1.8;">{project.data.description}</p>}
+    </div>
+
+    {project.data.image && (
+      <div class="reveal" style="margin-bottom: 3rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <img src={project.data.image} alt={project.data.title} style="width: 100%; height: auto; display: block;" />
+      </div>
+    )}
+
+    <div class="markdown-body reveal">
+      <Content />
+    </div>
+  </article>
+</Layout>

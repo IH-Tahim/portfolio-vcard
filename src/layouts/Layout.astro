@@ -6,131 +6,155 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Expert Front-End Web Developer specializing in high-performance, mobile-first design." } = Astro.props;
+const { 
+  title = "Imam Hasan Tahim — Digital Marketer & Web Developer", 
+  description = "Imam Hasan Tahim is a results-driven Digital Marketer and Web Developer based in Dhaka, Bangladesh. Specializing in Facebook & Google Ads, SEO, Shopify, WordPress, and Landing Page Design." 
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MT6SQKHJ');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="digital marketer dhaka, facebook ads bangladesh, google ads, SEO expert bangladesh, wordpress developer, shopify expert, ihtahim"/>
+    
+    <meta property="og:title" content={title}/>
+    <meta property="og:description" content={description}/>
+    <meta property="og:url" content="https://ihtahim.com"/>
+    <meta property="og:type" content="website"/>
 
-    <!-- Google Fonts: Syne and Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
-    <!-- Partytown - GTM / GA4 / Meta Pixel (Placeholders) -->
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-      
-      // Meta Pixel placeholder
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'PIXEL_ID');
-      fbq('track', 'PageView');
-    </script>
-
-    <!-- Theme Inline Script to prevent FOUC -->
     <script is:inline>
+      // Early theme initialization to prevent FOUC
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
         }
         return 'dark'; // default to dark
       })();
       
       if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
       }
-      window.localStorage.setItem('theme', theme);
     </script>
   </head>
-  <body class="bg-offwhite text-charcoal dark:bg-charcoal dark:text-offwhite font-sans antialiased selection:bg-burntorange selection:text-white transition-colors duration-300">
-    
-    <!-- Sticky Navigation -->
-    <header class="fixed top-0 w-full z-50 bg-offwhite/80 dark:bg-charcoal/80 backdrop-blur-md border-b border-charcoal/10 dark:border-offwhite/10 transition-colors duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-          <a href="/" class="font-syne font-bold text-2xl tracking-tight text-burntorange">
-            Portfolio<span class="text-charcoal dark:text-offwhite">.</span>
-          </a>
-          
-          <nav class="hidden md:flex space-x-8">
-            <a href="/" class="hover:text-burntorange transition-colors">Home</a>
-            <a href="/about" class="hover:text-burntorange transition-colors">About</a>
-            <a href="/services" class="hover:text-burntorange transition-colors">Services</a>
-            <a href="/portfolio" class="hover:text-burntorange transition-colors">Work</a>
-            <a href="/blog" class="hover:text-burntorange transition-colors">Blog</a>
-            <a href="/contact" class="hover:text-burntorange transition-colors">Contact</a>
-          </nav>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6SQKHJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-          <!-- Theme Toggle -->
-          <button id="theme-toggle" class="p-2 rounded-full bg-charcoal/5 dark:bg-offwhite/5 hover:bg-charcoal/10 dark:hover:bg-offwhite/10 transition-colors cursor-pointer" aria-label="Toggle Dark Mode">
-            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-            </svg>
-            <svg id="theme-toggle-light-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 1.32a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM13.44 16.22a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.22-1.32a1 1 0 01-1.415 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM2 10a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zm1.32-4.22a1 1 0 010-1.415l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM10 5a5 5 0 100 10 5 5 0 000-10z" clip-rule="evenodd"></path>
-            </svg>
-          </button>
-        </div>
+    <!-- ═══════════════════ NAVBAR ═══════════════════ -->
+    <nav class="nav" id="nav">
+      <a href="/" class="nav-logo">ih<span>.</span>tahim</a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <script is:inline>
+            document.write(document.documentElement.getAttribute('data-theme') === 'light' ? '☀️' : '🌙');
+          </script>
+        </button>
+        <a href="/contact" class="nav-cta">Hire Me</a>
       </div>
-    </header>
+    </nav>
 
-    <main class="pt-20 min-h-screen">
+    <main>
       <slot />
     </main>
 
-    <script>
-      // Theme Toggle Logic
-      const themeToggleBtn = document.getElementById('theme-toggle');
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer>
+      <div>
+        <div class="footer-logo syne">ih<span>.</span>tahim</div>
+        <div class="footer-tagline">Digital Marketer &amp; Web Developer · Dhaka, BD</div>
+      </div>
 
-      themeToggleBtn?.addEventListener('click', function() {
-          if (document.documentElement.classList.contains('dark')) {
-              document.documentElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/vcard">vCard</a></li>
+      </ul>
+
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/i-h-tahim/" target="_blank" class="social-btn" title="LinkedIn">in</a>
+        <a href="https://www.facebook.com/tahim022" target="_blank" class="social-btn" title="Facebook">f</a>
+        <a href="https://instagram.com/ih_tahim" target="_blank" class="social-btn" title="Instagram">ig</a>
+        <a href="mailto:imamhasantahim@gmail.com" class="social-btn" title="Email">@</a>
+      </div>
+
+      <div class="footer-copy">
+        © 2025 Imam Hasan Tahim · ihtahim.com · All rights reserved ·
+        <a href="/vcard" style="color:var(--orange);margin-left:4px;">NFC Card</a>
+      </div>
+    </footer>
+
+    <script>
+      // ── NAV scroll effect
+      const nav = document.getElementById('nav');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          nav.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+      }
+
+      // ── Dark / Light theme toggle
+      const toggle = document.getElementById('themeToggle');
+      const root   = document.documentElement;
+      let dark = root.getAttribute('data-theme') !== 'light';
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          dark = !dark;
+          if (dark) {
+            root.removeAttribute('data-theme');
+            toggle.textContent = '🌙';
+            localStorage.setItem('theme','dark');
           } else {
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
-          }
-      });
-      
-      // Intersection Observer for scroll animations (fade-up)
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            entry.target.classList.remove('opacity-0', 'translate-y-10');
-            // Unobserve after animating once for performance
-            observer.unobserve(entry.target);
+            root.setAttribute('data-theme','light');
+            toggle.textContent = '☀️';
+            localStorage.setItem('theme','light');
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      }
 
-      // Apply observer to elements with 'animate-on-scroll' class
-      // Note: In Astro, scripts run once per page load unless using ViewTransitions.
-      // This will set up the observer for any element with .animate-on-scroll
-      document.addEventListener('DOMContentLoaded', () => {
-          document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
-            observer.observe(el);
-          });
-      });
+      // ── Scroll reveal (Intersection Observer)
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(el => observer.observe(el));
     </script>
   </body>
 </html>

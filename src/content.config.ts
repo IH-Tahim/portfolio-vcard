@@ -12,4 +12,15 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const portfolio = defineCollection({
+  loader: glob({ pattern: "**/*.mdoc", base: "./src/content/portfolio" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.string().or(z.date()).transform((val) => new Date(val)),
+    category: z.string().optional(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+  }),
+});
+
+export const collections = { posts, portfolio };

@@ -2,49 +2,38 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-// Fetch all blog posts from the Keystatic collection
 const posts = await getCollection('posts');
-
-// Sort by date descending
-const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts = posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 ---
 
 <Layout title="Blog | Portfolio">
-  <section class="py-20 px-4 max-w-4xl mx-auto">
-    <div class="text-center mb-16 animate-on-scroll">
-      <h1 class="text-5xl font-syne font-bold mb-6">Thoughts & <span class="text-burntorange">Articles</span></h1>
-      <p class="text-lg opacity-80">
-        Insights on web development, performance optimization, and modern design.
-      </p>
+  <section style="padding: 120px 7%; background: var(--dark); min-height: 80vh;">
+    <div class="section-head reveal" style="text-align: center;">
+      <div class="eyebrow" style="justify-content: center;">My Blog</div>
+      <h1 class="services-headline syne" style="margin-top: 1rem;">Thoughts & <em>Articles</em></h1>
     </div>
 
     {sortedPosts.length === 0 ? (
-      <div class="text-center py-10 opacity-70">
-        <p>No blog posts found. Head over to <a href="/keystatic" class="text-burntorange underline">/keystatic</a> to create your first post!</p>
+      <div style="text-align: center; color: var(--muted); margin-top: 40px;">
+        <p>No blog posts found.</p>
       </div>
     ) : (
-      <div class="space-y-8">
-        {sortedPosts.map((post, index) => (
-          <article class="group relative block p-8 border border-charcoal/10 dark:border-offwhite/10 rounded-3xl hover:border-burntorange transition-colors animate-on-scroll" style={`transition-delay: ${index * 100}ms;`}>
-            <div class="flex items-center gap-4 text-sm font-medium opacity-60 mb-4">
-              <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
-              <span>&bull;</span>
-              <span>{post.data.readTime}</span>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        {sortedPosts.map((post) => (
+          <a href={`/blog/${post.id}`} style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; transition: all 0.3s;" class="reveal" onmouseover="this.style.borderColor='var(--border-o)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)';">
+            <div style="font-size: 0.75rem; color: var(--orange); font-weight: 600; text-transform: uppercase; margin-bottom: 1rem;">
+              {new Date(post.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} · {post.data.readTime}
             </div>
-            <h2 class="text-3xl font-syne font-bold mb-4 group-hover:text-burntorange transition-colors">
-              <a href={`/blog/${post.id}`}>
-                <span class="absolute inset-0"></span>
-                {post.data.title}
-              </a>
-            </h2>
-            <p class="opacity-80 leading-relaxed mb-6">
-              {post.data.description || 'Click to read more...'}
+            <h3 class="syne" style="font-size: 1.5rem; font-weight: 700; color: var(--cream); margin-bottom: 1rem; line-height: 1.2;">
+              {post.data.title}
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.7;">
+              {post.data.description}
             </p>
-            <span class="inline-flex items-center text-burntorange font-semibold group-hover:translate-x-2 transition-transform">
-              Read Article 
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </span>
-          </article>
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px;">
+              Read Article <span style="font-size: 1.2rem;">→</span>
+            </div>
+          </a>
         ))}
       </div>
     )}

@@ -22,5 +22,19 @@ export default config({
         content: fields.markdoc({ label: 'Content' }),
       },
     }),
+    portfolio: collection({
+      label: 'Portfolio Projects',
+      slugField: 'title',
+      path: 'src/content/portfolio/*',
+      format: { contentField: 'content' },
+      schema: {
+        title: fields.slug({ name: { label: 'Project Title' } }),
+        date: fields.date({ label: 'Date', defaultValue: { kind: 'today' } }),
+        category: fields.text({ label: 'Category', defaultValue: 'Web Development' }),
+        description: fields.text({ label: 'Short Description', multiline: true }),
+        image: fields.text({ label: 'Image URL', description: 'Enter an image URL for the project cover' }),
+        content: fields.markdoc({ label: 'Project Details' }),
+      },
+    }),
   },
 });

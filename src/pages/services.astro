@@ -1,47 +1,420 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const services = [
-  {
-    title: "Custom Web Development",
-    description: "High-performance, mobile-first websites built with modern technologies like Astro, vanilla JS, and Tailwind CSS. Focus on 100/100 Lighthouse scores.",
-    icon: "💻"
-  },
-  {
-    title: "Digital Marketing Integration",
-    description: "Seamless integration of Google Analytics, Tag Manager, and Meta Pixel using Partytown to keep your site blazing fast.",
-    icon: "📈"
-  },
-  {
-    title: "UI/UX Design",
-    description: "Clean, minimalist, and highly professional design systems with built-in dark mode and smooth micro-interactions.",
-    icon: "🎨"
-  },
-  {
-    title: "SEO Optimization",
-    description: "Technical SEO baked into the core architecture, ensuring your website ranks high and loads instantly on all devices.",
-    icon: "🚀"
-  }
-];
 ---
 
-<Layout title="Services | Portfolio">
-  <section class="py-20 px-4 max-w-7xl mx-auto">
-    <div class="text-center mb-16 animate-on-scroll">
-      <h1 class="text-5xl font-syne font-bold mb-6">My <span class="text-burntorange">Services</span></h1>
-      <p class="text-lg max-w-2xl mx-auto opacity-80">
-        I offer comprehensive web solutions that blend cutting-edge performance with professional design.
+<Layout title="Services | Imam Hasan Tahim">
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+
+  <div class="hero-pre">What I Offer — ihtahim.com/services</div>
+
+  <h1 class="hero-h1">
+    Services that<br>
+    <em>actually</em><br>
+    <span class="outline">move</span> the needle.
+  </h1>
+
+  <p class="hero-sub">
+    I don't just run campaigns — I build the complete system behind them.
+    <strong>Strategy, execution, tracking, and optimisation</strong> — all under one roof,
+    from a marketer who can also write the code.
+  </p>
+
+  <div class="result-pills">
+    <div class="rpill"><span class="rpill-num">35%</span> Reduction in ad cost</div>
+    <div class="rpill"><span class="rpill-num">100+</span> Leads generated in a month</div>
+    <div class="rpill"><span class="rpill-num">3+</span> Years of real-world results</div>
+    <div class="rpill"><span class="rpill-num">12+</span> Happy clients</div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="https://wa.me/8801673539272" target="_blank" class="btn-primary">💬 Chat on WhatsApp</a>
+    <a href="#services" class="btn-ghost">View All Services ↓</a>
+  </div>
+
+  <div class="hero-numbers">
+    <div class="h-num">
+      <div class="h-num-val" data-count="35">0<sup>%</sup></div>
+      <div class="h-num-lbl">Ad Cost Reduced</div>
+    </div>
+    <div class="h-num">
+      <div class="h-num-val" data-count="100">0<sup>+</sup></div>
+      <div class="h-num-lbl">Leads / Month</div>
+    </div>
+    <div class="h-num">
+      <div class="h-num-val" data-count="12">0<sup>+</sup></div>
+      <div class="h-num-lbl">Clients Served</div>
+    </div>
+    <div class="h-num">
+      <div class="h-num-val" data-count="3">0<sup>+</sup></div>
+      <div class="h-num-lbl">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICES GRID ══════════════ -->
+<section class="services-section" id="services">
+  <div class="srv-intro reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:1.2rem">My Services</div>
+      <h2 class="srv-h2">Six ways I grow<br><em>your business.</em></h2>
+    </div>
+    <p class="srv-p">
+      Each service is designed to work as a standalone solution
+      or as part of a <strong>complete growth system</strong>.
+      No fluff — just the strategies that have worked for real clients.
+    </p>
+  </div>
+
+  <div class="srv-grid">
+
+    <!-- Featured: Facebook & Google Ads -->
+    <div class="srv-card featured reveal d1">
+      <div class="srv-card-num">01</div>
+      <span class="srv-icon">🎯</span>
+      <div class="srv-name">Facebook & Google Ads</div>
+      <p class="srv-desc">
+        I build paid ad systems — not just campaigns. From audience research and
+        psychological ad copy to <strong>server-side tracking</strong> and aggressive
+        A/B testing. I've reduced client ad costs by <strong>35%</strong> while maintaining
+        lead volume. Every taka you spend is tracked, measured, and optimised.
       </p>
+      <span class="srv-result">35% lower cost per lead</span>
+      <div class="srv-tags">
+        <span class="srv-tag">Meta Ads</span>
+        <span class="srv-tag">Google Search</span>
+        <span class="srv-tag">Retargeting</span>
+        <span class="srv-tag">Pixel Setup</span>
+        <span class="srv-tag">A/B Testing</span>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {services.map((service, index) => (
-        <div class="p-8 border border-charcoal/10 dark:border-offwhite/10 rounded-2xl hover:border-burntorange dark:hover:border-burntorange transition-colors group animate-on-scroll" style={`transition-delay: ${index * 100}ms;`}>
-          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform origin-left">{service.icon}</div>
-          <h3 class="text-2xl font-syne font-bold mb-3">{service.title}</h3>
-          <p class="opacity-80 leading-relaxed">{service.description}</p>
-        </div>
-      ))}
+    <!-- SEO -->
+    <div class="srv-card reveal d2">
+      <div class="srv-card-num">02</div>
+      <span class="srv-icon">📈</span>
+      <div class="srv-name">SEO & Content Marketing</div>
+      <p class="srv-desc">
+        Technical SEO audits, keyword strategy, and content that ranks.
+        I audit your site's code — not just your keywords — to fix the speed
+        and structural issues that silently kill your rankings.
+      </p>
+      <span class="srv-result">Organic traffic growth</span>
+      <div class="srv-tags">
+        <span class="srv-tag">Technical SEO</span>
+        <span class="srv-tag">Content Strategy</span>
+        <span class="srv-tag">Semrush</span>
+      </div>
     </div>
-  </section>
+
+    <!-- Social Media -->
+    <div class="srv-card reveal d1">
+      <div class="srv-card-num">03</div>
+      <span class="srv-icon">📱</span>
+      <div class="srv-name">Social Media Marketing</div>
+      <p class="srv-desc">
+        Brand storytelling that builds real audiences. I manage content calendars,
+        community engagement, and growth strategy across Facebook, Instagram, and LinkedIn —
+        with <strong>100+ leads generated</strong> in a single month for past clients.
+      </p>
+      <span class="srv-result">100+ leads in a month</span>
+      <div class="srv-tags">
+        <span class="srv-tag">Facebook</span>
+        <span class="srv-tag">Instagram</span>
+        <span class="srv-tag">Content Calendar</span>
+      </div>
+    </div>
+
+    <!-- Shopify -->
+    <div class="srv-card reveal d2">
+      <div class="srv-card-num">04</div>
+      <span class="srv-icon">🛒</span>
+      <div class="srv-name">Shopify Optimization</div>
+      <p class="srv-desc">
+        Your store's performance directly impacts your revenue.
+        I improve page speed, conversion rate, and UX — fixing the leaks in
+        your e-commerce funnel that are costing you sales every single day.
+      </p>
+      <span class="srv-result">Higher conversion rates</span>
+      <div class="srv-tags">
+        <span class="srv-tag">CRO</span>
+        <span class="srv-tag">Speed</span>
+        <span class="srv-tag">UX</span>
+        <span class="srv-tag">App Integration</span>
+      </div>
+    </div>
+
+    <!-- WordPress -->
+    <div class="srv-card reveal d3">
+      <div class="srv-card-num">05</div>
+      <span class="srv-icon">💻</span>
+      <div class="srv-name">WordPress Development</div>
+      <p class="srv-desc">
+        Fast, clean, conversion-focused WordPress sites. I've built
+        everything from service business sites to document management systems.
+        Performance and design — both treated as non-negotiable.
+      </p>
+      <span class="srv-result">Built for speed & conversion</span>
+      <div class="srv-tags">
+        <span class="srv-tag">WordPress</span>
+        <span class="srv-tag">Elementor</span>
+        <span class="srv-tag">Custom Dev</span>
+      </div>
+    </div>
+
+    <!-- Landing Pages -->
+    <div class="srv-card featured reveal d1">
+      <div class="srv-card-num">06</div>
+      <span class="srv-icon">🚀</span>
+      <div class="srv-name">Landing Page Design & Development</div>
+      <p class="srv-desc">
+        A landing page built by someone who understands both code and marketing psychology
+        is fundamentally different from one built by just a designer.
+        I write the copy using <strong>psychological conversion principles</strong>,
+        build it with clean HTML/CSS for blazing speed, and track every micro-interaction.
+        The result: pages that convert visitors into customers — not just look good.
+      </p>
+      <span class="srv-result">Conversion-optimised by design</span>
+      <div class="srv-tags">
+        <span class="srv-tag">HTML/CSS</span>
+        <span class="srv-tag">Copywriting</span>
+        <span class="srv-tag">GTM Tracking</span>
+        <span class="srv-tag">A/B Testing</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ PROCESS ══════════════ -->
+<section class="process-section" id="process">
+  <div class="process-top reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:1.2rem">How I Work</div>
+      <h2 class="proc-h2">A 7-step system<br><em>built for results.</em></h2>
+    </div>
+    <p class="srv-p">
+      Most freelancers jump straight to execution. I start with diagnosis.
+      Every step below is designed to eliminate guesswork and maximise
+      your return — before we spend a single taka on ads.
+    </p>
+  </div>
+
+  <div class="process-steps">
+
+    <div class="proc-step reveal d1">
+      <div class="proc-num-col"><div class="proc-num">01</div></div>
+      <div class="proc-body">
+        <div class="proc-title">The Discovery Call</div>
+        <p class="proc-desc">We start with a quick chat to diagnose your business. I want to understand your core pain points, your ideal customer, and the <strong>psychological triggers</strong> that actually make them buy.</p>
+      </div>
+    </div>
+
+    <div class="proc-step reveal d2">
+      <div class="proc-num-col"><div class="proc-num">02</div></div>
+      <div class="proc-body">
+        <div class="proc-title">Market & Competitor Teardown</div>
+        <p class="proc-desc">Before we build anything, I <strong>reverse-engineer your top competitors</strong>. I look at their ad copy, their landing pages, and their offers to see exactly what they're doing right — and more importantly, where they're leaving money on the table for us to grab.</p>
+      </div>
+    </div>
+
+    <div class="proc-step reveal d3">
+      <div class="proc-num-col"><div class="proc-num">03</div></div>
+      <div class="proc-body">
+        <div class="proc-title">The Technical Audit</div>
+        <p class="proc-desc">I look under your hood. I audit your site's <strong>code for speed and mobile responsiveness</strong>, check your SEO health, and map out exactly where your current sales funnel is leaking traffic.</p>
+      </div>
+    </div>
+
+    <div class="proc-step reveal d1">
+      <div class="proc-num-col"><div class="proc-num">04</div></div>
+      <div class="proc-body">
+        <div class="proc-title">The Blueprint</div>
+        <p class="proc-desc">I come back to you with a <strong>visual map of the exact journey</strong> your customer will take — from the first ad impression to the final checkout — along with a clear timeline and proposal.</p>
+      </div>
+    </div>
+
+    <div class="proc-step reveal d2">
+      <div class="proc-num-col"><div class="proc-num">05</div></div>
+      <div class="proc-body">
+        <div class="proc-title">Build & Execute</div>
+        <p class="proc-desc">This is where my dev skills kick in. I build out <strong>blazing-fast, custom landing pages</strong>, set up advanced server-side tracking that standard marketers can't touch, and write ad copy using psychological principles designed to convert.</p>
+      </div>
+    </div>
+
+    <div class="proc-step reveal d3">
+      <div class="proc-num-col"><div class="proc-num">06</div></div>
+      <div class="proc-body">
+        <div class="proc-title">Launch & Iterate</div>
+        <p class="proc-desc">We go live — but the work is just starting. I aggressively track the data, use <strong>heatmaps</strong>, and A/B test the layouts and messaging to constantly push your conversion rates higher.</p>
+      </div>
+    </div>
+
+    <div class="proc-step reveal d1">
+      <div class="proc-num-col"><div class="proc-num">07</div></div>
+      <div class="proc-body">
+        <div class="proc-title">Scale</div>
+        <p class="proc-desc">Once we have the data proving the funnel is profitable, <strong>we open the taps</strong>. We scale the ad budget efficiently, expanding into new audiences and maximising your return on investment.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ RESULTS & TESTIMONIALS ══════════════ -->
+<section class="results-section" id="results">
+  <div class="results-orb"></div>
+
+  <div class="results-top reveal">
+    <div>
+      <div class="eyebrow" style="margin-bottom:1.2rem">Results & Proof</div>
+      <h2 class="res-h2">Numbers that<br><em>don't lie.</em></h2>
+    </div>
+    <p class="srv-p">
+      Real results from real clients. Every number below came from
+      actual campaigns — not estimates, not projections.
+    </p>
+  </div>
+
+  <div class="counters reveal">
+    <div class="counter">
+      <div class="counter-val" data-count="35">0<sup>%</sup></div>
+      <div class="counter-lbl">Ad Cost Reduced</div>
+    </div>
+    <div class="counter">
+      <div class="counter-val" data-count="100">0<sup>+</sup></div>
+      <div class="counter-lbl">Leads in One Month</div>
+    </div>
+    <div class="counter">
+      <div class="counter-val" data-count="12">0<sup>+</sup></div>
+      <div class="counter-lbl">Clients Served</div>
+    </div>
+    <div class="counter">
+      <div class="counter-val" data-count="3">0<sup>+</sup></div>
+      <div class="counter-lbl">Years Experience</div>
+    </div>
+  </div>
+
+  <div class="testi-grid">
+
+    <div class="testi-card reveal d1">
+      <div class="testi-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testi-text">"Tahim completely transformed our online presence. Our Facebook page went from quiet to generating consistent leads every week. He doesn't just run ads — he thinks about your whole customer journey."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">NF</div>
+        <div>
+          <div class="testi-name">Client — Natural Food BD</div>
+          <div class="testi-role">Facebook Ads Client · Dhaka</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal d2">
+      <div class="testi-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testi-text">"What sets Tahim apart is that he understands both the technical side and the marketing side. He built our quote system and runs our Google Ads — having one person who does both saves us enormous time and money."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S4</div>
+        <div>
+          <div class="testi-name">Spotless4u Cleaning Services</div>
+          <div class="testi-role">IT Manager & Marketing · Canberra, AU</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal d3">
+      <div class="testi-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testi-text">"The website Tahim built for us is fast, clean, and actually brings in clients. He explained everything clearly and delivered exactly what he promised. I'd highly recommend him to any business owner."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">WP</div>
+        <div>
+          <div class="testi-name">WordPress Development Client</div>
+          <div class="testi-role">Web Development · Bangladesh</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ WHY ME ══════════════ -->
+<section class="why-section" id="why">
+  <div class="reveal">
+    <div class="eyebrow" style="margin-bottom:1.2rem">Why Choose Me</div>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:800;letter-spacing:-.03em;color:var(--cream);line-height:1.1;">
+      The edge no other<br><em style="font-style:italic;color:var(--o)">freelancer offers.</em>
+    </h2>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-item reveal d1">
+      <span class="why-icon">🧠</span>
+      <div class="why-title">I speak both languages</div>
+      <p class="why-desc">Most marketers can't code. Most developers don't understand funnels. I do both — which means <strong>no miscommunication, no middlemen, no delays</strong> between strategy and execution.</p>
+    </div>
+    <div class="why-item reveal d2">
+      <span class="why-icon">📊</span>
+      <div class="why-title">Data first, always</div>
+      <p class="why-desc">I set up <strong>advanced tracking</strong> before I touch your ad budget. GA4, GTM, server-side pixel — you'll know exactly where every lead comes from and what it cost.</p>
+    </div>
+    <div class="why-item reveal d3">
+      <span class="why-icon">⚡</span>
+      <div class="why-title">Speed is a competitive advantage</div>
+      <p class="why-desc">I build landing pages that load in under <strong>2 seconds</strong>. Every 1-second delay costs you 7% in conversions. Fast pages win more customers — period.</p>
+    </div>
+    <div class="why-item reveal d4">
+      <span class="why-icon">🔬</span>
+      <div class="why-title">Psychology-driven copy</div>
+      <p class="why-desc">I don't write generic ad copy. I use <strong>psychological conversion principles</strong> — scarcity, social proof, loss aversion — to write ads that connect and convert.</p>
+    </div>
+    <div class="why-item reveal d5">
+      <span class="why-icon">🤖</span>
+      <div class="why-title">AI-powered workflows</div>
+      <p class="why-desc">I actively use and integrate <strong>AI tools</strong> into marketing workflows — from content production to chatbot automation — keeping your brand ahead of the curve.</p>
+    </div>
+    <div class="why-item reveal d6">
+      <span class="why-icon">🌏</span>
+      <div class="why-title">Global experience, local rates</div>
+      <p class="why-desc">Currently managing digital marketing for an <strong>Australian company remotely</strong> from Dhaka — giving you international-standard work at competitive local pricing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="cta-section" id="contact">
+  <div class="reveal">
+    <h2 class="cta-h2">Ready to build a<br><em>system that converts?</em></h2>
+    <p class="cta-sub">
+      No forms to fill. No waiting. Just send me a message on WhatsApp
+      and let's have a 15-minute discovery call — completely free.
+    </p>
+  </div>
+  <div class="cta-right reveal d2">
+    <a href="https://wa.me/8801673539272?text=Hi%20Tahim%2C%20I%20saw%20your%20services%20page%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" class="cta-wa">
+      <span class="cta-wa-icon">💬</span>
+      <div>
+        <div class="cta-wa-text">Chat on WhatsApp</div>
+        <div class="cta-wa-sub">+880 167 353 9272 · Usually replies within 1 hour</div>
+      </div>
+    </a>
+    <a href="mailto:imamhasantahim@gmail.com?subject=Service Inquiry from ihtahim.com" class="cta-email">
+      <span style="font-size:1.3rem">✉️</span>
+      <div>
+        <div style="font-size:.82rem;font-weight:500;color:var(--cream)">Send an Email</div>
+        <div style="font-size:.7rem;color:var(--muted)">imamhasantahim@gmail.com</div>
+      </div>
+    </a>
+    <p class="cta-note">No commitment. Just a conversation about your goals.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
 </Layout>
